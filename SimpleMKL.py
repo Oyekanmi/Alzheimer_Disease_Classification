@@ -5,12 +5,13 @@ from sklearn.multiclass import OneVsRestClassifier
 import copy
 
 class SimpleMKL_Multiclass:
-    def __init__(self, kernels, beta=0.0,
+    
+    def __init__(self, kernels, 
                  C=10.0, max_iter=100,
                  tol=1e-3, random_state=0):
+        
         self.C = C
         self.kernels=kernels
-        self.beta=beta #min modality contribution
         self.max_iter = max_iter
         self.tol = tol
         self.random_state=random_state
@@ -21,12 +22,11 @@ class SimpleMKL_Multiclass:
         self.d = np.ones(self.M) / self.M
 
         for iteration in range(self.max_iter):
-            K = sum(self.d[m] * kernels[m] for m in range(self.M))
+            K = sum(self.d[m] * self.kernels[m] for m in range(self.M))
             self.svm = OneVsRestClassifier(SVC(C=self.C, 
                                                kernel='precomputed', 
                                                random_state=self.random_state), n_jobs=-1)
             self.svm.fit(K, y)
-            
             obj = self._objective(self.d, self.svm, self.kernels)
             grad = self._compute_gradient(self.svm,self.kernels)
             #print(f"Gradient:{grad}")
@@ -35,16 +35,16 @@ class SimpleMKL_Multiclass:
             #print(f"D:{D}")
             #print(f"grad:{grad}")
             #print(f"obj:{obj}")
-
             obj_= 0
-            d_=self.d
-            D_=self.D
+            d_=self.d.copy()
+            D_=self.D.copy()
             mu=np.argmax(self.d)
             self.gamma_max=0
           
             while obj_< obj:
-                d=d_
-                D=D_
+                
+                d=d_.copy()
+                D=D_.copy()
                 #print(f"d:{d}")
                 #print(f"D:{D}")
                 #indices of d element with negative grad
@@ -73,7 +73,7 @@ class SimpleMKL_Multiclass:
                 d_ = d + self.gamma_max*D
                 D_[mu] = D[mu]-D[v]
                 D_[v]=0
-                K_ = sum(d_[m] * kernels[m] for m in range(self.M))
+                K_ = sum(d_[m] * self.kernels[m] for m in range(self.M))
                 svm = OneVsRestClassifier(SVC(C=self.C, kernel='precomputed', 
                                               random_state=self.random_state), n_jobs=-1)
                 svm.fit(K_, y)
@@ -82,7 +82,7 @@ class SimpleMKL_Multiclass:
 
             #print(f"gamma max:{self.gamma_max}")
             #print(f"d_value{d}")
-            d_updated = self._line_search(self.d, self.D, self.gamma_max, self.svm,y, self.kernels)
+            d_updated = self._line_search(self.d, self.D, self.gamma_max, self.svm,y,self.kernels)
             #d=d_updated
             self.d = d_updated
             #print(f"updated d:{d}")
@@ -116,8 +116,11 @@ class SimpleMKL_Multiclass:
         best_obj = self._objective(d,fitted_estimator, kernels)
         
         for gamma in np.linspace(0, gamma_max,15):
+            #print(d)
+            print(D)
             d_new = d + gamma * D
-            d_new[d_new < self.beta] = self.beta #min modality contribution
+            #print(d_new)
+            d_new[d_new < 0] = 0 
             d_new /= np.sum(d_new)
             K= sum(d_new[m] * kernels[m] for m in range(self.M))
             clf_copy.fit(K, y)
@@ -125,7 +128,7 @@ class SimpleMKL_Multiclass:
             if obj < best_obj:
                 best_d = d_new
                 best_obj = obj
-        print(f"Best d:{best_d}")
+                print(f"Best d:{best_d}")
         return best_d
 
     def predict(self, kernels_test):
@@ -144,7 +147,7 @@ class SimpleMKL_Multiclass:
                 dual_coef = estimator.estimators_[i].dual_coef_
                 support_vectors = estimator.estimators_[i].support_
                 grad[i][m] = -0.5 * np.dot(dual_coef, np.dot(K_m[support_vectors][:, support_vectors], dual_coef.T))
-            
+        print(grad)  
         return grad.sum(axis=0)
     
     def _compute_descent_direction(self, d, grad):
