@@ -156,7 +156,7 @@ class SimpleMKL_Multiclass:
     
     def _compute_descent_direction(self, d, grad):
         d_ = d.copy()
-        d_[d_<self.beta]=self.beta
+        #d_[d_<self.beta]=self.beta
         mu = np.argmax(d_)
         D = np.zeros_like(d_)
         
