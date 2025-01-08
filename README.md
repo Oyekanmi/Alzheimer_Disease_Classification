@@ -2,6 +2,7 @@
 
 This repository provides the implementation of the methods described in the paper **"Multiclass classification of Alzheimer's disease prodromal stages using sequential feature embeddings and regularized multikernel support vector machine"**. The study introduces an advanced framework for distinguishing between the prodromal stages of Alzheimer's disease (AD), namely Cognitive Normal (CN), Mild Cognitive Impairment (MCI), and Alzheimer's Disease (AD), using a unified, multimodal machine learning approach.
 
+![Framework](images/framework.png)  
 ## Research Significance
 
 Alzheimer's disease remains a major challenge due to its progressive nature and the heterogeneity of its prodromal stages, particularly in the MCI category. Existing approaches often rely on sequential binary classification tasks or direct concatenation of features, which are limited in interpretability and prone to overfitting due to feature imbalance. This study addresses these challenges by proposing a robust, unified multiclass classification framework that leverages both neuroimaging and non-imaging biomarkers.
