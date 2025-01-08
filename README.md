@@ -27,6 +27,32 @@ The proposed framework achieves SOTA performance with a mean accuracy of **84.87
 
 ### Comparison to Existing Methods
 Unlike traditional methods, which often decompose multiclass tasks into sequential binary classifications, this framework directly tackles multiclass classification, enabling more comprehensive insights into the progression of Alzheimer's disease. The regularized multikernel SVM prevents overfitting and ensures a balanced representation of all modalities, offering a scalable solution for similar neuroimaging challenges.
+| Articles                  | Samples                        | AD vs. CN    | AD vs. MCI   | CN vs. MCI   | AD vs. MCI vs. CN | Some or all NEW features present? |
+|---------------------------|--------------------------------|--------------|--------------|--------------|-------------------|------------------------------------|
+| Zhang et al., (2011)      | 51 AD, 99 MCI, 52 CN          | 93.2         | -            | 76.4         | -                 | NO                                 |
+| Gray et al., (2013)       | 37 AD, 75 MCI, 35 CN          | 89.0 ± 0.7   | -            | 74.6 ± 0.8   | -                 | NO                                 |
+| Liu et al., (2014)        | 51 AD, 99 MCI, 52 CN          | 94.37        | -            | 78.80        | -                 | NO                                 |
+| Suk et al., (2014)        | 51 AD, 99 MCI, 52 CN          | 96.18 ± 6.58 | 73.21        | 81.45        | -                 | NO                                 |
+| Jie et al., (2015)        | 51 AD, 99 MCI, 52 CN          | 95.38        | -            | 82.99        | -                 | NO                                 |
+| Xu et al., (2015)         | 113 AD, 110 MCI, 117 CN       | 94.8         | -            | 74.5         | -                 | NO                                 |
+| Liu et al., (2015)        | 85 AD, 102 ncMCI, 67 cMCI,    | 92.89 ± 6.17 | 82.10 ± 4.91 | 82.10 ± 4.91 | 53.79 ± 4.7       | NO                                 |
+| Zu et al., (2016)         | 51 AD, 99 MCI, 52 CN          | 95.95        | -            | 80.26        | -                 | NO                                 |
+| Ye et al., (2016)         | 51 AD, 99 MCI, 52 CN          | 95.92        | -            | 82.13        | -                 | NO                                 |
+| Li et al., (2017)         | 113 AD, 110 MCI, 117 CN       | 97.36        | -            | 77.66        | -                 | NO                                 |
+| Tong et al., (2017)       | 37 AD, 75 MCI, 35 CN          | 91.8         | -            | 79.5         | 60.2              | YES                                |
+| Singanamalli et al.,      | 52 AD, 71 MCI, 26 CN          | 87           | -            | 86           | 75.16**           | YES                                |
+| Wang et al., (2018)       | 99 MCI, 52 CN                 | -            | 75.5         | -            | -                 | NO                                 |
+| Kim and Lee, (2018)       | 51 AD, 99 MCI, 52 CN          | 97.12        | -            | 87.09        | -                 | NO                                 |
+| Li et al., (2018)         | 113 AD, 110 MCI, 117 CN       | 98.18        | 74.47        | 78.5         | -                 | NO                                 |
+| Hao et al., (2020)        | ADNI1-51 AD, 99 MCI, 52 CN    | 97.60 ± 5.03 | -            | 84.47 ± 6.83 | -                 | NO                                 |
+| Akramifard et al., (2020) | 156 AD, 338 MCI, 211 CN       | 98.81        | 81.40        | 81.61        | -                 | NO                                 |
+| Fang et al., (2020)       | 162 AD, 493 MCI, 251 CN       | -            | 87.69        | -            | 67.69             | NO                                 |
+| Lin et al., (2020)        | 102 AD, 315 MCI, 200 CN       | 84.7         | -            | -            | YES               | NO                                 |
+| Lin et al., (2021)        | 105 AD, 441 MCI, 200 CN       | 93.4         | -            | 66.7 ± 1.4   | -                 | YES                                |
+| Ning et al., (2021)       | ADNI1-93 AD, 200 MCI, 99 CN   | 96.9 ± 3.5   | -            | 86.6 ± 3.4   | -                 | NO                                 |
+| Shi et al., (2022)        | 51 AD, 99 MCI, 52 CN          | 96.76 ± 0.05| -            | 80.73 ± 0.09 | -                 | NO                                 |
+| Ban et al., (2023)        | 144 AD, 203 MCI, 181 CN       | 98.78        | 86.47        | 78.15        | -                 | NO                                 |
+| **OURS**                 | 53 AD, 81 MCI, 60 CN          | 100.00 ± 0.0| 92.96 ± 5.07 | 86.89 ± 4.22 | 84.87 ± 6.09      | YES                                |
 
 ### Insights into Neuroimaging and Biomarkers
 The study highlights the relative contributions of different brain regions and modalities to classification accuracy, offering valuable insights into the biological underpinnings of Alzheimer's disease. For example:
