@@ -20,11 +20,15 @@ Alzheimer's disease remains a major challenge due to its progressive nature and 
 3. **Multimodal Integration**:
    - The study demonstrates the efficacy of combining neuroimaging data with complementary non-imaging biomarkers, achieving state-of-the-art (SOTA) accuracy in multiclass classification tasks.
 
+![Embeddings](images/feature_embeddings.png)  
+
 ## Results and Impact
 
 The proposed framework achieves SOTA performance with a mean accuracy of **84.87±6.09%** and an F1 score of **84.83±6.12%** for CN vs. MCI vs. AD classification. Furthermore:
 - It generalizes well to binary classification tasks, achieving perfect accuracy (100%) in distinguishing between AD and CN cases.
 - It significantly improves interpretability and stability compared to existing sequential binary classification methods.
+
+![Results](images/accuracy_plot.png)  
 
 ### Comparison to Existing Methods
 Unlike traditional methods, which often decompose multiclass tasks into sequential binary classifications, this framework directly tackles multiclass classification, enabling more comprehensive insights into the progression of Alzheimer's disease. The regularized multikernel SVM prevents overfitting and ensures a balanced representation of all modalities, offering a scalable solution for similar neuroimaging challenges.
