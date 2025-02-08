@@ -10,7 +10,7 @@ Alzheimer's disease remains a major challenge due to its progressive nature and 
 ## Methodological Novelty
 
 1. **Sequential Feature Embeddings**:
-   - Introduces an **Ensemble Manifold Regularized Sparse Low-Rank Approximation (EMR-SLRA)** for dimensionality reduction while preserving the intrinsic geometry of multimodal data. 
+   - Adopted the **Ensemble Manifold Regularized Sparse Low-Rank Approximation(EMR-SLRA) by (Zhang et al., 2015)** for dimensionality reduction while preserving the intrinsic geometry of multimodal data. 
    - This method creates a joint low-dimensional embedding from MRI and PET features, capturing interdependencies between modalities and mitigating the curse of dimensionality.
 
 2. **Regularized Multikernel Support Vector Machine (SVM)**:
@@ -67,6 +67,10 @@ The study highlights the relative contributions of different brain regions and m
 ## Conclusion
 
 This research presents a significant advancement in the field of Alzheimer's disease classification by introducing a unified, interpretable, and high-performing multiclass framework. The integration of advanced embedding techniques with regularized multikernel learning provides a pathway for robust multimodal analyses, with potential applications extending beyond Alzheimer's disease to other neurodegenerative disorders.
+
+## References
+Zhang, Lefei, Zhang, Q., Zhang, Liangpei, Tao, D., Huang, X., Du, B., 2015. Ensemble manifold regularized sparse low-rank approximation for multiview feature embedding. Pattern Recognit. 48, 3102–3112. https://doi.org/10.1016/j.patcog.2014.12.016
+
 
 ## Citation
 If you use this code or framework, please cite:
